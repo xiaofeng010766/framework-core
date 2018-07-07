@@ -1,8 +1,6 @@
 package com.framework.core.file.excel.poi;
 
-import com.framework.base.consts.DateFormatDef;
-import com.framework.base.consts.NumberConst;
-import com.framework.base.consts.StringConst;
+import com.framework.core.constant.StringConst;
 import com.framework.core.utils.DateUtils;
 import com.framework.core.utils.NumberUtils;
 import com.framework.exception.SystemException;
@@ -131,7 +129,7 @@ public final class PoiUtils {
                 break;
             case Cell.CELL_TYPE_NUMERIC:// Number类型
                 if (DateUtil.isCellDateFormatted(cell)) {// 时间格式返回类型为YYYYMMDD
-                    value = DateUtils.format(DateFormatDef.FORMAT_YYYYMMDD, cell.getDateCellValue());
+                    value = DateUtils.format("yyyy-MM-dd", cell.getDateCellValue());
                 } else {
                     value = NumberToTextConverter.toText(cell.getNumericCellValue());
                 }
@@ -200,11 +198,11 @@ public final class PoiUtils {
         // 判断Excel版本
         // Excel 2003
         if (sheet instanceof HSSFSheet) {
-            if (row < NumberConst.IntDef.INT_ZERO || row > NumberConst.ExcelMaxRowCount.EXCEL_2003_MAX_ROW_COUNT) {
+            if (row < 0 || row > 65536) {
                 return Boolean.FALSE;
             }
         } else {// Excel 2003以外的
-            if (row < NumberConst.IntDef.INT_ZERO || row > NumberConst.ExcelMaxRowCount.EXCEL_2007_MAX_ROW_COUNT) {
+            if (row < 0 || row > 1048576) {
                 return Boolean.FALSE;
             }
         }
@@ -224,13 +222,13 @@ public final class PoiUtils {
             return Boolean.FALSE;
         }
         if (sheet instanceof HSSFSheet) {
-            if (column < NumberConst.IntDef.INT_ZERO
-                    || column > NumberConst.ExcelMaxColumnCount.EXCEL_2003_MAX_COLUMN_COUNT) {
+            if (column < 0
+                    || column > 256 ) {
                 return Boolean.FALSE;
             }
         } else {// Excel 2003以外的
-            if (column < NumberConst.IntDef.INT_ZERO
-                    || column > NumberConst.ExcelMaxColumnCount.EXCEL_2007_MAX_COLUMN_COUNT) {
+            if (column < 0
+                    || column >  16384 ) {
                 return Boolean.FALSE;
             }
         }

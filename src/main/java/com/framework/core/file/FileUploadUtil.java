@@ -3,8 +3,7 @@ package com.framework.core.file;
 
 import com.alibaba.fastjson.util.IOUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.framework.base.consts.NumberConst;
-import com.framework.base.consts.StringConst;
+import com.framework.core.constant.StringConst;
 import com.framework.core.utils.StringUtils;
 import com.framework.exception.UploadException;
 import org.apache.http.HttpEntity;
@@ -236,7 +235,7 @@ public class FileUploadUtil {
         String[] temps = fileId.split(StringConst.COMMA);
         String result;
         //fileid为固定格式
-        if (temps.length == NumberConst.IntDef.INT_TWO) {
+        if (temps.length == 2) {
             result = temps[0] + "/" + temps[1] + "/" + fileName;
         } else {
             result = StringConst.EMPTY;

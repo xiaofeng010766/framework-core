@@ -1,12 +1,5 @@
 package com.framework.core.utils;
 
-import com.framework.base.rest.SearchRestRequest;
-import com.framework.base.rest.param.BaseRestPagingParam;
-import com.framework.base.rest.param.BaseRestParam;
-import com.framework.base.rest.param.BaseRestSortParam;
-import com.framework.base.web.param.BasePagePagingParam;
-import com.framework.base.web.param.BasePageSortParam;
-
 import java.util.ArrayList;
 import java.util.List;
 
